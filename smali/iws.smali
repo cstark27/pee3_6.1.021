@@ -49,5 +49,31 @@
 
     invoke-static {}, Livz;->c()Z
 
+    if-nez v0, :cond_0
+
+    :goto_0
     return-void
+
+    :cond_0
+    sget v0, Lcom/google/android/libraries/camera/exif/ExifInterface;->G:I
+
+    sget-object v1, Landroid/os/Build;->MODEL:Ljava/lang/String;
+
+    invoke-virtual {p0, v0, v1}, Lcom/google/android/libraries/camera/exif/ExifInterface;->a(ILjava/lang/Object;)Lknm;
+
+    move-result-object v0
+
+    invoke-virtual {p0, v0}, Lcom/google/android/libraries/camera/exif/ExifInterface;->a(Lknm;)Lknm;
+
+    sget v0, Lcom/google/android/libraries/camera/exif/ExifInterface;->E:I
+
+    sget-object v1, Landroid/os/Build;->MANUFACTURER:Ljava/lang/String;
+
+    invoke-virtual {p0, v0, v1}, Lcom/google/android/libraries/camera/exif/ExifInterface;->a(ILjava/lang/Object;)Lknm;
+
+    move-result-object v0
+
+    invoke-virtual {p0, v0}, Lcom/google/android/libraries/camera/exif/ExifInterface;->a(Lknm;)Lknm;
+
+    goto :goto_0
 .end method

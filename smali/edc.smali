@@ -286,7 +286,14 @@
     invoke-virtual {v1}, Lkyb;->b()Z
 
     move-result v1
-
+	
+	sget v2, Lbti;->sd845:I
+	
+	if-nez v2, :cond_22
+	
+	const v1, 0x0	#eis fix
+	
+	:cond_22
     if-eqz v1, :cond_1
 
     move v0, v4
@@ -320,7 +327,14 @@
     invoke-virtual {v1}, Lkyb;->b()Z
 
     move-result v1
-
+	
+	sget v2, Lbti;->sd845:I
+	
+	if-nez v2, :cond_21
+	
+	const v1, 0x0	#eis fix
+	
+	:cond_21
     if-eqz v1, :cond_e
 
     move v1, v4
@@ -383,7 +397,14 @@
     invoke-virtual {v12}, Lkyb;->b()Z
 
     move-result v12
-
+	
+	sget v2, Lbti;->sd845:I
+	
+	if-nez v2, :cond_20
+	
+	const v12, 0x0	#eis fix
+	
+	:cond_20
     if-eqz v12, :cond_b
 
     sget-object v12, Lkfz;->c:Lkfz;
@@ -437,7 +458,14 @@
     invoke-virtual {v11}, Lkyb;->b()Z
 
     move-result v11
-
+	
+	sget v2, Lbti;->sd845:I
+	
+	if-nez v2, :cond_19
+	
+	const v11, 0x0	#eis fix
+	
+	:cond_19
     if-eqz v11, :cond_6
 
     :cond_5

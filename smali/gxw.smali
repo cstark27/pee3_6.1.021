@@ -143,6 +143,8 @@
     invoke-virtual {v0}, Lkyb;->b()Z
 
     move-result v0
+	
+	const/4 v0, 0x1	#enable photobooth button
 
     if-eqz v0, :cond_0
 

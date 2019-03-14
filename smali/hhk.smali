@@ -170,6 +170,8 @@
     invoke-virtual {v6, v13}, Lceq;->a(Lcet;)Z
 
     move-result v6
+	
+	#const/4 v6, 0x1	#enables Pixel 3 bokeh photo
 
     if-nez v6, :cond_3
 
@@ -183,6 +185,8 @@
     invoke-virtual {v6, v13}, Lceq;->a(Lcet;)Z
 
     move-result v6
+	
+	#const/4 v6, 0x1	#enables all the Portrait debug photos
 
     if-nez v6, :cond_2
 

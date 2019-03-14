@@ -256,9 +256,24 @@
     .locals 6
 
     sget-object v0, Landroid/os/Build;->MANUFACTURER:Ljava/lang/String;
-
+	
+	const-string v1, "Google"
+	
+	invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	
+	move-result v1
+	
+	if-eqz v1, :cond_2
+	
+	#invoke-static {}, Lcom/custom/extras;->sP3I()I
+	
+	#move-result v3
+	
+	#if-nez v3, :cond_3
+	
     sget-object v1, Landroid/os/Build;->DEVICE:Ljava/lang/String;
-
+	
+	:goto_1
     sget-object v2, Landroid/os/Build;->FINGERPRINT:Ljava/lang/String;
 
     invoke-static {v0}, Lkyb;->a(Ljava/lang/String;)Ljava/lang/String;
@@ -379,12 +394,24 @@
     invoke-direct {v0, v2, v3}, Lkyb;-><init>(J)V
 
     goto :goto_0
+	
+	:cond_2
+	const-string v0, "Google"
+	
+	const-string v1, "sailfish"
+	
+	goto :goto_1
+	
+	:cond_3
+	const-string v1, "blueline"
+	
+	goto :goto_1
 .end method
 
 
 # virtual methods
 .method public final b()Z
-    .locals 1
+    .locals 2
 
     iget-boolean v0, p0, Lkyb;->d:Z
 
@@ -409,7 +436,7 @@
     return v0
 
     :cond_1
-    const/4 v0, 0x0
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method

@@ -36,8 +36,15 @@
 .method public final synthetic a()Ljava/lang/Object;
     .locals 2
 
+	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I	#8.1 fix
+
+    const/16 v1, 0x1c
+
+    if-lt v0, v1, :cond_0
+	
     sget-object v0, Landroid/hardware/camera2/CaptureRequest;->STATISTICS_OIS_DATA_MODE:Landroid/hardware/camera2/CaptureRequest$Key;
 
+	:goto_0
     const/4 v1, 0x1
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -57,4 +64,9 @@
     check-cast v0, Lgcb;
 
     return-object v0
+	
+	:cond_0
+	sget-object v0, Landroid/hardware/camera2/CaptureRequest;->LENS_OPTICAL_STABILIZATION_MODE:Landroid/hardware/camera2/CaptureRequest$Key;
+	
+	goto :goto_0
 .end method

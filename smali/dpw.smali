@@ -81,7 +81,7 @@
     return-object v0
 
     :cond_0
-    sget-object v0, Lgpt;->b:Lgpt;
+    sget-object v0, Lgpt;->b:Lgpt;	#something related to using the PVC
 
     goto :goto_0
 .end method

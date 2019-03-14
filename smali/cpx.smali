@@ -562,12 +562,16 @@
     invoke-virtual {v2, v5}, Lceq;->a(Lcet;)Z
 
     move-result v2
+	
+	#const v2, 0x1	#enable IPU for Portrait but Pix2 is missing system files
 
     if-eqz v2, :cond_3
 
     iget-object v2, v3, Lcpt;->c:Lclq;
 
     iget-boolean v2, v2, Lclq;->n:Z
+	
+	#const v2, 0x0	#enable IPU for Portrait but Pix2 is missing system files
 
     if-nez v2, :cond_2
 

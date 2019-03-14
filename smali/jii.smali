@@ -19,7 +19,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 3
+    .locals 5
 
     const/4 v1, 0x0
 
@@ -62,6 +62,12 @@
 
     if-eqz v0, :cond_1
 
+	sget v3, Landroid/os/Build$VERSION;->SDK_INT:I	#8.1 fix
+
+    const/16 v4, 0x1c
+
+    if-lt v3, v4, :cond_6
+	
     sget-object v1, Landroid/hardware/camera2/CaptureResult;->CONTROL_AF_SCENE_CHANGE:Landroid/hardware/camera2/CaptureResult$Key;
 
     :cond_0
@@ -110,4 +116,9 @@
     move-object v0, v1
 
     goto :goto_0
+	
+	:cond_6
+	sget-object v1, Landroid/hardware/camera2/CaptureResult;->CONTROL_SCENE_MODE:Landroid/hardware/camera2/CaptureResult$Key;
+	
+	goto :goto_1
 .end method

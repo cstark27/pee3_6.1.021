@@ -13,12 +13,15 @@
 .method static constructor <clinit>()V
     .locals 1
 
+    .prologue
     const/16 v0, 0x4aec
 
+    .line 7
     sput v0, Ljhs;->a:I
 
     const/16 v0, 0x4c1c
 
+    .line 8
     sput v0, Ljhs;->b:I
 
     return-void
@@ -27,6 +30,7 @@
 .method static a()[B
     .locals 8
 
+    .prologue
     const/4 v7, 0x4
 
     const/16 v6, 0xc
@@ -39,6 +43,7 @@
 
     const/16 v0, 0x2000
 
+    .line 1
     new-array v0, v0, [B
 
     const/16 v1, -0x22
@@ -46817,6 +46822,7 @@
 .method static b()[B
     .locals 8
 
+    .prologue
     const/4 v7, 0x1
 
     const/16 v6, 0x18
@@ -46829,6 +46835,7 @@
 
     const/16 v0, 0x2000
 
+    .line 2
     new-array v0, v0, [B
 
     const/16 v1, -0x70
@@ -93563,6 +93570,7 @@
 .method static c()[B
     .locals 8
 
+    .prologue
     const/4 v7, 0x4
 
     const/4 v6, 0x2
@@ -93575,6 +93583,7 @@
 
     const/16 v0, 0xaec
 
+    .line 3
     new-array v0, v0, [B
 
     const/16 v1, -0x7b
@@ -109113,6 +109122,7 @@
 .method static d()[B
     .locals 8
 
+    .prologue
     const/16 v7, 0x61
 
     const/16 v6, 0x20
@@ -109125,6 +109135,7 @@
 
     const/16 v0, 0x2000
 
+    .line 4
     new-array v0, v0, [B
 
     const/16 v1, -0x22
@@ -155893,6 +155904,7 @@
 .method static e()[B
     .locals 8
 
+    .prologue
     const/16 v7, 0x10
 
     const/16 v6, 0x30
@@ -155905,6 +155917,7 @@
 
     const/16 v0, 0x2000
 
+    .line 5
     new-array v0, v0, [B
 
     const/16 v1, -0x7d
@@ -202763,6 +202776,7 @@
 .method static f()[B
     .locals 8
 
+    .prologue
     const/4 v7, 0x1
 
     const/4 v6, 0x4
@@ -202775,6 +202789,7 @@
 
     const/16 v0, 0xc1c
 
+    .line 6
     new-array v0, v0, [B
 
     aput-byte v4, v0, v3

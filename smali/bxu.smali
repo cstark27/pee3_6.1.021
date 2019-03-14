@@ -98,7 +98,7 @@
 
 .field public final Q:Lcet;
 
-.field private final U:Lbti;
+.field public final U:Lbti;
 
 .field private final V:Lcie;
 
@@ -611,13 +611,21 @@
 
     :cond_0
     :goto_0
-    iget-object v1, p0, Lbxu;->V:Lcie;
+    #iget-object v1, p0, Lbxu;->V:Lcie;
 
-    invoke-virtual {v1}, Lcie;->a()Z
+    #invoke-virtual {v1}, Lcie;->a()Z
 
-    move-result v1
+    #move-result v1
+	
+	iget-object v1, p0, Lbxu;->U:Lbti;
+	
+	invoke-virtual {v1}, Lbti;->sPhotos()I
+	
+	move-result v1
+	
+	#const/4 v1, 0x0		#old gallery
 
-    if-eqz v1, :cond_1
+    if-nez v1, :cond_1
 
     const/4 v0, 0x1
 
@@ -888,6 +896,8 @@
     invoke-virtual {v0}, Lkyb;->b()Z
 
     move-result v0
+	
+	const v0, 0x0	#show 60 fps video
 
     if-nez v0, :cond_0
 

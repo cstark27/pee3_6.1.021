@@ -49,7 +49,19 @@
     invoke-virtual {v0, p4, v1, v2}, Leht;->a(Lclq;Lgor;Lfyx;)Lgor;
 
     move-result-object v2
+	
+	sget v7, Lbti;->sMode:I		#hdr enhanced for night
+	
+	if-nez v7, :cond_1
+	
+	sget v7, Lbti;->sPort:I
+	
+	if-eqz v7, :cond_0
+	
+	move-object v2, v1		#hdr enhanced for portrait
 
+	:goto_0
+	:cond_0
     new-instance v7, Lehf;
 
     iget-object v8, p3, Leib;->f:Lklc;
@@ -107,6 +119,11 @@
     iput-object v0, p0, Lehl;->a:Lken;
 
     return-void
+	
+	:cond_1
+	move-object v2, v1		#fix 8.1 zsl night bug
+	
+	goto :goto_0
 .end method
 
 

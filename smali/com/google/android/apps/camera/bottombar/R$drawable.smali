@@ -724,6 +724,8 @@
 
 .field public static final quantum_ic_photosphere_white_24:I = 0x7f0201dd
 
+.field public static final quantum_gm_ic_device_thermostat_grey_24:I = 0x7f0201ed
+
 .field public static final refocus_arrow_bottom:I = 0x7f0201ef
 
 .field public static final refocus_arrow_top:I = 0x7f0201f0
@@ -789,6 +791,10 @@
 .field public static final tutorial_graphics_photo_front:I = 0x7f02021e
 
 .field public static final video_switch_icon:I = 0x7f02021f
+
+.field public static final added_outline_hdr_on_black_24dp:I = 0x7f020260
+
+.field public static final added_outline_assessment_black_24:I = 0x7f020260
 
 
 # direct methods

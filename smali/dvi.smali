@@ -906,6 +906,8 @@
     invoke-virtual {v2}, Leqm;->a()Z
 
     move-result v2
+	
+	sput v2, Leud;->lens:I		#Pixel 2016 gallery workaround when in Portrait
 
     if-eqz v2, :cond_3
 

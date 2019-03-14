@@ -189,6 +189,12 @@
 
 .method private final c()Z
     .locals 2
+	
+	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I	#8.1 fix
+
+    const/16 v1, 0x1c
+
+    if-lt v0, v1, :cond_0
 
     iget-object v0, p0, Lbbp;->j:Lbtg;
 
@@ -447,7 +453,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_6
+    #if-nez v0, :cond_6		#fix 8.1 package installer error and also allows lockscreen launch
 
     :cond_4
     iget-object v0, p0, Lbbp;->k:Lnef;

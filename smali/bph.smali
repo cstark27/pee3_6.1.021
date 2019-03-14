@@ -51,7 +51,7 @@
 
 # virtual methods
 .method public final run()V
-    .locals 10
+    .locals 11
 
     iget-object v1, p0, Lbph;->a:Lbpg;
 
@@ -91,12 +91,19 @@
 
     move-result-object v0
 
+	sget v4, Landroid/os/Build$VERSION;->SDK_INT:I	#8.1 fix
+
+    const/16 v10, 0x1c
+
+    if-lt v4, v10, :cond_4
+	
     invoke-virtual {v3}, Lmhd;->b()Z
 
     move-result v4
 
     if-nez v4, :cond_1
 
+	:cond_4
     iget-object v1, v1, Lbpg;->b:Lkyn;
 
     const/4 v3, 0x0

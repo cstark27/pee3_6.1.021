@@ -129,11 +129,11 @@
 
     iget-boolean v1, v0, Lkyb;->g:Z
 
-    if-nez v1, :cond_0
+    if-nez v1, :cond_2
 
     iget-boolean v1, v0, Lkyb;->i:Z
 
-    if-nez v1, :cond_0
+    if-nez v1, :cond_2
 
     iget-boolean v0, v0, Lkyb;->h:Z
 
@@ -160,6 +160,8 @@
     invoke-virtual {v0}, Lkyb;->b()Z
 
     move-result v0
+	
+	const/4 v0, 0x1
 
     if-nez v0, :cond_1
 

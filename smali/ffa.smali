@@ -139,7 +139,14 @@
     invoke-virtual {v1}, Lkyb;->b()Z
 
     move-result v1
-
+	
+	sget v2, Lbti;->sd845:I
+	
+	if-nez v2, :cond_3
+	
+	const v1, 0x0	#eis fix
+	
+	:cond_3
     if-eqz v1, :cond_1
 
     goto :goto_0

@@ -226,8 +226,15 @@
 
     invoke-direct {v7}, Lcom/google/googlex/gcam/GeometricCalibrationVector;-><init>()V
 
+	sget v9, Landroid/os/Build$VERSION;->SDK_INT:I	#8.1 fix
+
+    const/16 v10, 0x1c
+
+    if-lt v9, v10, :cond_10
+	
     sget-object v0, Landroid/hardware/camera2/CaptureResult;->LENS_DISTORTION:Landroid/hardware/camera2/CaptureResult$Key;
 
+	:goto_3
     invoke-interface {p1, v0}, Lkyr;->a(Landroid/hardware/camera2/CaptureResult$Key;)Ljava/lang/Object;
 
     move-result-object v0
@@ -246,8 +253,15 @@
 
     if-nez v1, :cond_0
 
-    sget-object v1, Landroid/hardware/camera2/CameraCharacteristics;->LENS_DISTORTION:Landroid/hardware/camera2/CameraCharacteristics$Key;
+	sget v9, Landroid/os/Build$VERSION;->SDK_INT:I	#8.1 fix
 
+    const/16 v10, 0x1c
+
+    if-lt v9, v10, :cond_11
+	
+    sget-object v1, Landroid/hardware/camera2/CameraCharacteristics;->LENS_DISTORTION:Landroid/hardware/camera2/CameraCharacteristics$Key;
+	
+	:goto_4
     invoke-interface {v5, v1}, Lkvg;->a(Landroid/hardware/camera2/CameraCharacteristics$Key;)Ljava/lang/Object;
 
     move-result-object v1
@@ -270,6 +284,12 @@
 
     :cond_2
     :goto_1
+	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I	#8.1 fix
+
+    const/16 v1, 0x1c
+
+    if-lt v0, v1, :cond_3
+	
     sget-object v0, Ljik;->m:Landroid/hardware/camera2/CameraCharacteristics$Key;
 
     if-eqz v0, :cond_3
@@ -663,6 +683,16 @@
     move-object v5, v0
 
     goto/16 :goto_0
+	
+	:cond_10
+	sget-object v0, Landroid/hardware/camera2/CaptureResult;->LENS_RADIAL_DISTORTION:Landroid/hardware/camera2/CaptureResult$Key;
+	
+	goto :goto_3
+	
+	:cond_11
+	sget-object v1, Landroid/hardware/camera2/CameraCharacteristics;->LENS_RADIAL_DISTORTION:Landroid/hardware/camera2/CameraCharacteristics$Key;
+	
+	goto :goto_4
 .end method
 
 .method public final a(Lkyr;)Lcom/google/googlex/gcam/SpatialGainMap;
@@ -952,8 +982,15 @@
 
     invoke-virtual {p2, v0, v4}, Lgbx;->a(Landroid/hardware/camera2/CaptureRequest$Key;Ljava/lang/Object;)Lgbx;
 
-    sget-object v0, Landroid/hardware/camera2/CaptureRequest;->STATISTICS_OIS_DATA_MODE:Landroid/hardware/camera2/CaptureRequest$Key;
+	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I	#8.1 fix
 
+    const/16 v1, 0x1c
+
+    if-lt v0, v1, :cond_4
+	
+    sget-object v0, Landroid/hardware/camera2/CaptureRequest;->STATISTICS_OIS_DATA_MODE:Landroid/hardware/camera2/CaptureRequest$Key;
+	
+	:goto_0
     invoke-virtual {p2, v0, v4}, Lgbx;->a(Landroid/hardware/camera2/CaptureRequest$Key;Ljava/lang/Object;)Lgbx;
 
     sget-object v0, Landroid/hardware/camera2/CaptureRequest;->STATISTICS_FACE_DETECT_MODE:Landroid/hardware/camera2/CaptureRequest$Key;
@@ -985,4 +1022,9 @@
     invoke-virtual {p2, v0, v1}, Lgbx;->a(Landroid/hardware/camera2/CaptureRequest$Key;Ljava/lang/Object;)Lgbx;
 
     return-void
+	
+	:cond_4
+	sget-object v0, Landroid/hardware/camera2/CaptureRequest;->LENS_OPTICAL_STABILIZATION_MODE:Landroid/hardware/camera2/CaptureRequest$Key;
+	
+	goto :goto_0
 .end method

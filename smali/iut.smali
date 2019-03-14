@@ -45,6 +45,30 @@
     move-result v1
 
     if-nez v1, :cond_2
+	
+	const-string v1, "android.media.action.PORTRAIT"
+
+    invoke-virtual {v0}, Landroid/content/Intent;->getAction()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_3
+
+    const-string v1, "android.media.action.NIGHTSIGHT"
+
+    invoke-virtual {v0}, Landroid/content/Intent;->getAction()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_4
 
     const-string v1, "android.media.action.IMAGE_CAPTURE"
 
@@ -107,6 +131,16 @@
 
     :cond_2
     sget-object v0, Liur;->q:Liur;
+
+    goto :goto_0
+	
+	:cond_3
+    sget-object v0, Liur;->k:Liur;	#launch Portrait mode
+
+    goto :goto_0
+
+    :cond_4
+    sget-object v0, Liur;->e:Liur;	#launch Night Sight
 
     goto :goto_0
 .end method

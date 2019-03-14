@@ -410,17 +410,109 @@
     invoke-direct {v4}, Lcom/google/googlex/gcam/StaticMetadata;-><init>()V
 
     sget-object v0, Landroid/os/Build;->MANUFACTURER:Ljava/lang/String;
+	
+	const-string v1, "Google"
+	
+	invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	
+	move-result v5
+	
+	if-eqz v5, :cond_e
 
     invoke-virtual {v4, v0}, Lcom/google/googlex/gcam/StaticMetadata;->setMake(Ljava/lang/String;)V
+	
+	#invoke-static {}, Lcom/custom/extras;->sP3M()I
+	
+	#move-result v0
+	
+	#if-nez v0, :cond_f
 
     sget-object v0, Landroid/os/Build;->MODEL:Ljava/lang/String;
+	
+	const-string v1, "Pixel"
+	
+	invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	
+	move-result v5
+	
+	if-nez v5, :cond_d
+	
+	const-string v1, "Pixel XL"
+	
+	invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	
+	move-result v5
+	
+	if-nez v5, :cond_d
+	
+	#const-string v0, "Pixel 3"
 
+	:goto_8
+	:cond_d
     invoke-virtual {v4, v0}, Lcom/google/googlex/gcam/StaticMetadata;->setModel(Ljava/lang/String;)V
+	
+	#invoke-static {}, Lcom/custom/extras;->sP3D()I
+	
+	#move-result v0
+	
+	#if-nez v0, :cond_g
 
     sget-object v0, Landroid/os/Build;->DEVICE:Ljava/lang/String;
 
+	:goto_9
     invoke-virtual {v4, v0}, Lcom/google/googlex/gcam/StaticMetadata;->setDevice(Ljava/lang/String;)V
-
+	
+	sget-object v0, Landroid/os/Build;->DEVICE:Ljava/lang/String;
+	
+	const-string v1, "sailfish"
+	
+	invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	
+	move-result v5
+	
+	if-nez v5, :cond_a
+	
+	const-string v1, "marlin"
+	
+	invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	
+	move-result v5
+	
+	if-nez v5, :cond_a
+	
+	const-string v1, "walleye"
+	
+	invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	
+	move-result v5
+	
+	if-nez v5, :cond_b
+	
+	const-string v1, "taimen"
+	
+	invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	
+	move-result v5
+	
+	if-nez v5, :cond_b
+	
+	const-string v1, "blueline"
+	
+	invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	
+	move-result v5
+	
+	if-nez v5, :cond_c
+	
+	const-string v1, "crosshatch"
+	
+	invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	
+	move-result v5
+	
+	if-nez v5, :cond_c
+	
+	:goto_7
     invoke-static {}, Lcom/google/googlex/gcam/GcamModule;->GetVersion()Ljava/lang/String;
 
     move-result-object v0
@@ -983,6 +1075,86 @@
     move-result-object v0
 
     goto/16 :goto_0
+	
+	:cond_a
+	const/4 v1, 0x1
+	
+	sput v1, Lbti;->sd821:I
+	
+	const/4 v1, 0x0
+	
+	sput v1, Lbti;->sd835:I
+	
+	sput v1, Lbti;->sd845:I
+	
+	goto :goto_7
+	
+	:cond_b
+	const/4 v1, 0x1
+	
+	sput v1, Lbti;->sd835:I
+	
+	const/4 v1, 0x0
+	
+	sput v1, Lbti;->sd821:I
+	
+	sput v1, Lbti;->sd845:I
+	
+	goto :goto_7
+	
+	:cond_c
+	const/4 v1, 0x1
+	
+	sput v1, Lbti;->sd845:I
+	
+	const/4 v1, 0x0
+	
+	sput v1, Lbti;->sd835:I
+	
+	sput v1, Lbti;->sd821:I
+	
+	goto :goto_7
+	
+	:cond_e
+	sget-object v0, Landroid/os/Build;->MANUFACTURER:Ljava/lang/String;
+	
+	const-string v0, "Google"
+
+    invoke-virtual {v4, v0}, Lcom/google/googlex/gcam/StaticMetadata;->setMake(Ljava/lang/String;)V
+
+    sget-object v0, Landroid/os/Build;->MODEL:Ljava/lang/String;
+	
+	const-string v0, "Pixel"
+
+    invoke-virtual {v4, v0}, Lcom/google/googlex/gcam/StaticMetadata;->setModel(Ljava/lang/String;)V
+
+    sget-object v0, Landroid/os/Build;->DEVICE:Ljava/lang/String;
+	
+	const-string v0, "sailfish"
+
+    invoke-virtual {v4, v0}, Lcom/google/googlex/gcam/StaticMetadata;->setDevice(Ljava/lang/String;)V
+	
+	const/4 v1, 0x1
+	
+	sput v1, Lbti;->sd821:I
+	
+	const/4 v1, 0x0
+	
+	sput v1, Lbti;->sd835:I
+	
+	sput v1, Lbti;->sd845:I
+	
+	goto :goto_7
+	
+	:cond_f
+	const-string v0, "Pixel 3"
+	
+	goto :goto_8
+	
+	:cond_g
+	const-string v0, "blueline"
+	
+	goto :goto_9
 .end method
 
 .method private static convertToLensFacing(Lkvw;)I
@@ -1944,8 +2116,15 @@
 .method private static oisMetadataFromCamera2(Lkyr;)Ljava/util/Optional;
     .locals 10
 
+	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I	#8.1 fix
+
+    const/16 v1, 0x1c
+
+    if-lt v0, v1, :cond_4
+	
     sget-object v0, Landroid/hardware/camera2/CaptureResult;->STATISTICS_OIS_DATA_MODE:Landroid/hardware/camera2/CaptureResult$Key;
 
+	:goto_2
     invoke-interface {p0, v0}, Lkyr;->a(Landroid/hardware/camera2/CaptureResult$Key;)Ljava/lang/Object;
 
     move-result-object v0
@@ -1969,6 +2148,12 @@
     return-object v0
 
     :cond_1
+	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I	#8.1 fix
+
+    const/16 v1, 0x1c
+
+    if-lt v0, v1, :cond_3
+	
     sget-object v0, Landroid/hardware/camera2/CaptureResult;->SENSOR_TIMESTAMP:Landroid/hardware/camera2/CaptureResult$Key;
 
     invoke-interface {p0, v0}, Lkyr;->a(Landroid/hardware/camera2/CaptureResult$Key;)Ljava/lang/Object;
@@ -2053,6 +2238,11 @@
     move-result-object v0
 
     goto :goto_0
+	
+	:cond_4
+	sget-object v0, Landroid/hardware/camera2/CaptureResult;->LENS_OPTICAL_STABILIZATION_MODE:Landroid/hardware/camera2/CaptureResult$Key;
+	
+	goto :goto_2
 .end method
 
 .method private static oisMetadataFromExperimental(Lkyr;)Ljava/util/Optional;
@@ -3995,9 +4185,16 @@
     sget-object v0, Landroid/hardware/camera2/CaptureRequest;->STATISTICS_LENS_SHADING_MAP_MODE:Landroid/hardware/camera2/CaptureRequest$Key;
 
     invoke-virtual {p2, v0, v4}, Lkon;->a(Landroid/hardware/camera2/CaptureRequest$Key;Ljava/lang/Object;)Lkon;
+	
+	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I	#8.1 fix
 
-    sget-object v0, Landroid/hardware/camera2/CaptureRequest;->STATISTICS_OIS_DATA_MODE:Landroid/hardware/camera2/CaptureRequest$Key;
+    const/16 v1, 0x1c
 
+    if-lt v0, v1, :cond_1
+	
+	sget-object v0, Landroid/hardware/camera2/CaptureRequest;->STATISTICS_OIS_DATA_MODE:Landroid/hardware/camera2/CaptureRequest$Key;
+	
+	:goto_0
     invoke-virtual {p2, v0, v4}, Lkon;->a(Landroid/hardware/camera2/CaptureRequest$Key;Ljava/lang/Object;)Lkon;
 
     sget-object v0, Landroid/hardware/camera2/CaptureRequest;->STATISTICS_FACE_DETECT_MODE:Landroid/hardware/camera2/CaptureRequest$Key;
@@ -4019,4 +4216,9 @@
     invoke-virtual {p2, v0, v5}, Lkon;->a(Landroid/hardware/camera2/CaptureRequest$Key;Ljava/lang/Object;)Lkon;
 
     return-void
+	
+	:cond_1
+	sget-object v0, Landroid/hardware/camera2/CaptureRequest;->LENS_OPTICAL_STABILIZATION_MODE:Landroid/hardware/camera2/CaptureRequest$Key;
+	
+	goto :goto_0
 .end method

@@ -11,9 +11,15 @@
 
 .field private final B:Loez;
 
+.field private final BB:Loez;
+
 .field private final C:Loez;
 
+.field private final CB:Loez;
+
 .field private final D:Lcli;
+
+.field private final DB:Loez;
 
 .field private final E:Lcll;
 
@@ -27,6 +33,8 @@
 
 .field private final J:Loez;
 
+.field private final JB:Lehm;
+
 .field private final K:Lbcj;
 
 .field private final L:Lcnz;
@@ -35,11 +43,17 @@
 
 .field private final N:Lggs;
 
+.field private final NB:Lfza;
+
 .field private final O:Ldtq;
 
 .field private final P:Loez;
 
+.field private final PB:Lejj;
+
 .field private final Q:Lfot;
+
+.field private final QB:Lehu;
 
 .field private final R:Loez;
 
@@ -56,6 +70,8 @@
 .field private final X:Lfvy;
 
 .field private final Y:Lfvz;
+
+.field private final YB:Leic;
 
 .field private final Z:Lfwa;
 
@@ -135,9 +151,13 @@
 
 .field private final ak:Loez;
 
+.field private final akB:Loez;
+
 .field private final al:Loez;
 
 .field private final am:Loez;
+
+.field private final amB:Loez;
 
 .field private final an:Loez;
 
@@ -165,11 +185,15 @@
 
 .field private final az:Loez;
 
+.field private final azB:Loez;
+
 .field private final b:Lfuz;
 
 .field private final bA:Loez;
 
 .field private final bB:Lchd;
+
+.field private final bBB:Lfsx;
 
 .field private final bC:Leln;
 
@@ -200,6 +224,8 @@
 .field private final bP:Loez;
 
 .field private final bQ:Lelp;
+
+.field private final bQB:Loez;
 
 .field private final bR:Loez;
 
@@ -235,11 +261,15 @@
 
 .field private final bh:Lgoz;
 
+.field private final bhB:Loez;
+
 .field private final bi:Lfzr;
 
 .field private final bj:Lfzs;
 
 .field private final bk:Lggv;
+
+.field private final bkB:Loez;
 
 .field private final bl:Loez;
 
@@ -263,6 +293,8 @@
 
 .field private final bv:Loez;
 
+.field private final bvB:Loez;
+
 .field private final bw:Loez;
 
 .field private final bx:Loez;
@@ -274,6 +306,8 @@
 .field private final c:Loez;
 
 .field private final cA:Lcdr;
+
+.field private final cAB:Lfxo;
 
 .field private final cB:Lcef;
 
@@ -339,7 +373,11 @@
 
 .field private final cg:Loez;
 
+.field private final cgB:Loez;
+
 .field private final ch:Lfwf;
+
+.field private final chB:Lenc;
 
 .field private final ci:Lfwg;
 
@@ -363,6 +401,8 @@
 
 .field private final cs:Lgrp;
 
+.field private final csB:Loez;
+
 .field private final ct:Liga;
 
 .field private final cu:Lchf;
@@ -376,6 +416,8 @@
 .field private final cy:Lcdk;
 
 .field private final cz:Lckq;
+
+.field private final czB:Loez;
 
 .field private final d:Lfvh;
 
@@ -407,7 +449,11 @@
 
 .field private final o:Loez;
 
+.field private final oldNew:I
+
 .field private final p:Loez;
+
+.field private final pB:Loez;
 
 .field private final q:Lfzx;
 
@@ -426,6 +472,8 @@
 .field private final x:Loez;
 
 .field private final y:Loez;
+
+.field private final yB:Loez;
 
 .field private final z:Loez;
 
@@ -1053,6 +1101,19 @@
     move-object/from16 v0, p0
 
     iput-object v2, v0, Leep;->ca:Lggx;
+	
+	sget v2, Landroid/os/Build$VERSION;->SDK_INT:I	#8.1 fix
+
+    const/16 v3, 0x1c
+
+    if-lt v2, v3, :cond_10
+	
+	const v2, 0x0
+	
+	:goto_10
+	move-object/from16 v0, p0
+
+    iput v2, v0, Leep;->oldNew:I
 
     const/4 v2, 0x3
 
@@ -1079,13 +1140,20 @@
     move-result-object v2
 
     move-object/from16 v0, p0
+	
+	iget v3, v0, Leep;->oldNew:I
+
+    if-nez v3, :cond_0
+
+    move-object/from16 v0, p0
 
     iget-object v3, v0, Leep;->bZ:Ldug;
 
     invoke-virtual {v2, v3}, Loev;->a(Loez;)Loev;
 
     move-result-object v2
-
+	
+	:cond_0
     move-object/from16 v0, p0
 
     iget-object v3, v0, Leep;->ca:Lggx;
@@ -1102,12 +1170,95 @@
 
     iput-object v2, v0, Leep;->B:Loez;
 
+	move-object/from16 v0, p0
+	
+	iget v3, v0, Leep;->oldNew:I
+
+    if-eqz v3, :cond_6
+	
+    move-object/from16 v0, p0
+	
+	iget-object v2, v0, Leep;->cT:Ldbo;
+
+    iget-object v3, v2, Ldbo;->n:Leds;
+
+    iget-object v4, v2, Ldbo;->m:Ledr;
+
+    iget-object v2, v2, Ldbo;->p:Ldbc;
+
+    iget-object v2, v2, Ldbc;->an:Loez;
+
+    invoke-static {v3, v4, v2}, Lenb;->a(Loez;Loez;Loez;)Lenb;
+
+    move-result-object v2
+
+    invoke-static {v2}, Loem;->a(Loez;)Loez;
+
+    move-result-object v2
+
     move-object/from16 v0, p0
 
+    iput-object v2, v0, Leep;->cgB:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Leep;->cgB:Loez;
+
+    invoke-static {v2}, Lenc;->a(Loez;)Lenc;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->chB:Lenc;
+
+    const/4 v2, 0x1
+
+    const/4 v3, 0x0
+
+    invoke-static {v2, v3}, Loeu;->a(II)Loev;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Leep;->chB:Lenc;
+
+    invoke-virtual {v2, v3}, Loev;->a(Loez;)Loev;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Loev;->a()Loeu;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->DB:Loez;
+
+    move-object/from16 v0, p0
+
+	:cond_6
+	move-object/from16 v0, p0
+	
     iget-object v2, v0, Leep;->B:Loez;
+	
+	move-object/from16 v0, p0
+
+    iget v3, v0, Leep;->oldNew:I
+
+    if-nez v3, :cond_1
 
     sget-object v3, Loeu;->a:Loen;
+	
+	goto :goto_0
 
+    :cond_1
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Leep;->DB:Loez;
+
+    :goto_0
     invoke-static {v2, v3}, Lghq;->a(Loez;Loez;)Lghq;
 
     move-result-object v2
@@ -3625,7 +3776,28 @@
     move-object/from16 v0, p0
 
     iput-object v2, v0, Leep;->bD:Loez;
+	
+	    move-object/from16 v0, p0
+	
+	    iget v2, v0, Leep;->oldNew:I
 
+    if-eqz v2, :cond_7
+	
+	    iget-object v2, v0, Leep;->cgB:Loez;
+
+    invoke-static {v2}, Lemz;->a(Loez;)Lemz;
+
+    move-result-object v2
+
+    invoke-static {v2}, Loem;->a(Loez;)Loez;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->azB:Loez;
+
+	:cond_7
     const/16 v2, 0x11
 
     const/4 v3, 0x1
@@ -3759,6 +3931,21 @@
     move-result-object v2
 
     move-object/from16 v0, p0
+	
+	    iget v3, v0, Leep;->oldNew:I
+
+    if-eqz v3, :cond_2
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Leep;->azB:Loez;
+
+    invoke-virtual {v2, v3}, Loev;->b(Loez;)Loev;
+
+    move-result-object v2
+
+    :cond_2
+    move-object/from16 v0, p0
 
     iget-object v3, v0, Leep;->bC:Leln;
 
@@ -3789,12 +3976,72 @@
     move-object/from16 v0, p0
 
     iput-object v2, v0, Leep;->cI:Loez;
+	
+		move-object/from16 v0, p0
+
+    iget v2, v0, Leep;->oldNew:I
+
+    if-eqz v2, :cond_8
+	
+	    iget-object v2, v0, Leep;->cgB:Loez;
+
+    invoke-static {v2}, Lena;->a(Loez;)Lena;
+
+    move-result-object v2
+
+    invoke-static {v2}, Loem;->a(Loez;)Loez;
+
+    move-result-object v2
 
     move-object/from16 v0, p0
 
+    iput-object v2, v0, Leep;->bhB:Loez;
+
+    const/4 v2, 0x0
+
+    const/4 v3, 0x1
+
+    invoke-static {v2, v3}, Loeu;->a(II)Loev;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Leep;->bhB:Loez;
+
+    invoke-virtual {v2, v3}, Loev;->b(Loez;)Loev;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Loev;->a()Loeu;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->csB:Loez;
+
+	:cond_8
+    move-object/from16 v0, p0
+
     iget-object v2, v0, Leep;->cJ:Loez;
+	
+	    move-object/from16 v0, p0
+
+    iget v3, v0, Leep;->oldNew:I
+
+    if-nez v3, :cond_3
 
     sget-object v3, Loeu;->a:Loen;
+	
+	    goto :goto_1
+
+    :cond_3
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Leep;->csB:Loez;
+
+    :goto_1
 
     move-object/from16 v0, p0
 
@@ -4910,10 +5157,461 @@
 
     iput-object v2, v0, Leep;->bW:Loez;
 
+	move-object/from16 v0, p0
+
+    iget v2, v0, Leep;->oldNew:I
+
+    if-eqz v2, :cond_5
+	
+    move-object/from16 v0, p0
+
+	iget-object v2, v0, Leep;->cT:Ldbo;
+
+    iget-object v2, v2, Ldbo;->p:Ldbc;
+
+    iget-object v2, v2, Ldbc;->bB:Lbwp;
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Leep;->cY:Loez;
+
+    invoke-static {v2, v3}, Lfxo;->a(Loez;Loez;)Lfxo;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->cAB:Lfxo;
+
+    sget-object v2, Ldbc;->a:Loez;
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->CB:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Leep;->cT:Ldbo;
+
+    move-object/from16 v16, v0
+
+    move-object/from16 v0, v16
+
+    iget-object v0, v0, Ldbo;->p:Ldbc;
+
+    move-object/from16 v21, v0
+
+    move-object/from16 v0, v21
+
+    iget-object v2, v0, Ldbc;->cJ:Loez;
+
+    move-object/from16 v0, v21
+
+    iget-object v3, v0, Ldbc;->bB:Lbwp;
+
+    move-object/from16 v0, v16
+
+    iget-object v4, v0, Ldbo;->c:Lgcp;
+
+    move-object/from16 v0, v16
+
+    iget-object v5, v0, Ldbo;->k:Lgrm;
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Leep;->bc:Lghl;
+
+    move-object/from16 v0, p0
+
+    iget-object v7, v0, Leep;->CB:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v8, v0, Leep;->bQ:Lelp;
+
+    move-object/from16 v0, p0
+
+    iget-object v9, v0, Leep;->af:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v10, v0, Leep;->bN:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v11, v0, Leep;->X:Lfvy;
+
+    move-object/from16 v0, p0
+
+    iget-object v12, v0, Leep;->J:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v13, v0, Leep;->G:Leiv;
+
+    move-object/from16 v0, p0
+
+    iget-object v14, v0, Leep;->cm:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Leep;->cAB:Lfxo;
+
+    move-object/from16 v0, v16
+
+    iget-object v0, v0, Ldbo;->l:Ledq;
+
+    move-object/from16 v16, v0
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Leep;->E:Lcll;
+
+    move-object/from16 v17, v0
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Leep;->D:Lcli;
+
+    move-object/from16 v18, v0
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Leep;->t:Lcod;
+
+    move-object/from16 v19, v0
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Leep;->aX:Loez;
+
+    move-object/from16 v20, v0
+
+    move-object/from16 v0, v21
+
+    iget-object v0, v0, Ldbc;->z:Loez;
+
+    move-object/from16 v21, v0
+
+    invoke-static/range {v2 .. v21}, Lejj;->a(Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;)Lejj;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->PB:Lejj;
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Leep;->bf:Loez;
+
+    invoke-static {v2}, Lggo;->a(Loez;)Lggo;
+
+    move-result-object v2
+
+    invoke-static {v2}, Loem;->a(Loez;)Loez;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->bvB:Loez;
+
+    sget-object v2, Ldbc;->a:Loez;
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->BB:Loez;
+
+    sget-object v2, Ldbc;->a:Loez;
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->yB:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Leep;->yB:Loez;
+
+    invoke-static {v2}, Lfsx;->a(Loez;)Lfsx;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->bBB:Lfsx;
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Leep;->cY:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Leep;->bvB:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Leep;->BB:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Leep;->bBB:Lfsx;
+
+    invoke-static {v2, v3, v4, v5}, Lfza;->a(Loez;Loez;Loez;Loez;)Lfza;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->NB:Lfza;
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Leep;->cT:Ldbo;
+
+    iget-object v3, v2, Ldbo;->c:Lgcp;
+
+    iget-object v2, v2, Ldbo;->l:Ledq;
+
+    invoke-static {v3, v2}, Lelv;->a(Loez;Loez;)Lelv;
+
+    move-result-object v2
+
+    invoke-static {v2}, Loem;->a(Loez;)Loez;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->bkB:Loez;
+
+    sget-object v2, Lcnh;->a:Lcnh;
+
+    invoke-static {v2}, Loem;->a(Loez;)Loez;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->amB:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Leep;->bkB:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Leep;->amB:Loez;
+
+    invoke-static {v2, v3}, Lekp;->a(Loez;Loez;)Lekp;
+
+    move-result-object v2
+
+    invoke-static {v2}, Loem;->a(Loez;)Loez;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->czB:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Leep;->cT:Ldbo;
+
+    iget-object v9, v5, Ldbo;->p:Ldbc;
+
+    iget-object v2, v9, Ldbc;->bd:Loez;
+
+    iget-object v3, v5, Ldbo;->c:Lgcp;
+
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Leep;->aE:Loez;
+
+    iget-object v5, v5, Ldbo;->i:Lgpx;
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Leep;->aG:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v7, v0, Leep;->aX:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v8, v0, Leep;->czB:Loez;
+
+    iget-object v9, v9, Ldbc;->r:Lbxv;
+
+    invoke-static/range {v2 .. v9}, Lels;->a(Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;)Lels;
+
+    move-result-object v2
+
+    invoke-static {v2}, Loem;->a(Loez;)Loez;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->akB:Loez;
+
+    sget-object v2, Leka;->a:Leka;
+
+    invoke-static {v2}, Loem;->a(Loez;)Loez;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->pB:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v7, v0, Leep;->cT:Ldbo;
+
+    iget-object v15, v7, Ldbo;->p:Ldbc;
+
+    iget-object v2, v15, Ldbc;->bB:Lbwp;
+
+    iget-object v3, v15, Ldbc;->cJ:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Leep;->pB:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Leep;->C:Loez;
+
+    iget-object v6, v7, Ldbo;->c:Lgcp;
+
+    iget-object v7, v7, Ldbo;->k:Lgrm;
+
+    move-object/from16 v0, p0
+
+    iget-object v8, v0, Leep;->J:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v9, v0, Leep;->E:Lcll;
+
+    move-object/from16 v0, p0
+
+    iget-object v10, v0, Leep;->D:Lcli;
+
+    move-object/from16 v0, p0
+
+    iget-object v11, v0, Leep;->t:Lcod;
+
+    iget-object v12, v15, Ldbc;->z:Loez;
+
+    iget-object v13, v15, Ldbc;->an:Loez;
+
+    iget-object v14, v15, Ldbc;->cd:Loez;
+
+    iget-object v15, v15, Ldbc;->cb:Lchv;
+
+    invoke-static/range {v2 .. v15}, Lehu;->a(Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;Loez;)Lehu;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->QB:Lehu;
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Leep;->cT:Ldbo;
+
+    iget-object v2, v2, Ldbo;->p:Ldbc;
+
+    iget-object v2, v2, Ldbc;->bB:Lbwp;
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Leep;->akB:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Leep;->QB:Lehu;
+
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Leep;->H:Loez;
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Leep;->NB:Lfza;
+
+    invoke-static/range {v2 .. v6}, Leic;->a(Loez;Loez;Loez;Loez;Loez;)Leic;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->YB:Leic;
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Leep;->cT:Ldbo;
+
+    iget-object v2, v2, Ldbo;->p:Ldbc;
+
+    iget-object v3, v2, Ldbc;->cj:Loez;
+
+    iget-object v4, v2, Ldbc;->bB:Lbwp;
+
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Leep;->YB:Leic;
+
+    iget-object v2, v2, Ldbc;->D:Loez;
+
+    invoke-static {v3, v4, v5, v2}, Lehm;->a(Loez;Loez;Loez;Loez;)Lehm;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->JB:Lehm;
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Leep;->JB:Lehm;
+
+    invoke-static {v2}, Legk;->a(Loez;)Legk;
+
+    move-result-object v2
+
+    invoke-static {v2}, Loem;->a(Loez;)Loez;
+
+    move-result-object v2
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Leep;->bQB:Loez;
+
+    move-object/from16 v0, p0
+
+    iget v3, v0, Leep;->oldNew:I
+
+    if-nez v3, :cond_4
+
+	:cond_5
     move-object/from16 v0, p0
 
     iget-object v2, v0, Leep;->bW:Loez;
 
+    goto :goto_2
+
+    :cond_4
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Leep;->bQB:Loez;
+
+    :goto_2
     move-object/from16 v0, p0
 
     iget-object v3, v0, Leep;->al:Loez;
@@ -5317,6 +6015,11 @@
     iput-object v2, v0, Leep;->bu:Loez;
 
     return-void
+	
+	:cond_10
+	const v2, 0x1
+	
+	goto :goto_10
 .end method
 
 

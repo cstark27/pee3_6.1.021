@@ -43,6 +43,10 @@
 # virtual methods
 .method public final synthetic a()Ljava/lang/Object;
     .locals 3
+	
+	const/4 v0, 0x0
+	
+	sput v0, Lbti;->sMode:I		#shooting mode, set to 0 by default
 
     iget-object v0, p0, Lcnn;->b:Loez;
 
@@ -71,6 +75,8 @@
     if-ne v0, v2, :cond_0
 
     const/4 v0, 0x1
+	
+	sput v0, Lbti;->sMode:I		#shooting mode, set to 1 if night sight
 
     invoke-virtual {v1, v0}, Lcom/google/googlex/gcam/ViewfinderProcessingOptions;->setProcess_motion(Z)V
 

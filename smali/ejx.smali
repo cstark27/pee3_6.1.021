@@ -49,9 +49,9 @@
     if-eqz v1, :cond_1
 
     :cond_0
-    sget-object v1, Lgpt;->a:Lgpt;
+    #sget-object v1, Lgpt;->a:Lgpt;
 
-    invoke-virtual {v0, p1, v1}, Lbjj;->a(Lkfh;Ljava/lang/Object;)V
+    #invoke-virtual {v0, p1, v1}, Lbjj;->a(Lkfh;Ljava/lang/Object;)V	#hdr+ mode at startup
 
     :cond_1
     return-object v0
@@ -406,7 +406,7 @@
 
     if-eqz v0, :cond_2
 
-    sget-object v0, Lhvf;->c:Lhvf;
+    sget-object v0, Lhvf;->a:Lhvf;
 
     move-object v1, v0
 

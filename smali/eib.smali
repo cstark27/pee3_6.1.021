@@ -21,6 +21,50 @@
 .method public constructor <init>(Lklc;Lken;Leht;Lejc;Lejg;Lfyy;)V
     .locals 3
 
+    .prologue
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    iput-object p1, p0, Leib;->f:Lklc;
+
+    .line 3
+    iput-object p2, p0, Leib;->a:Lken;
+
+    .line 4
+    iput-object p3, p0, Leib;->e:Leht;
+
+    .line 5
+    new-instance v0, Lein;
+
+    const/4 v1, 0x4
+
+    const/4 v2, 0x0
+
+    invoke-direct {v0, p4, v1, v2}, Lein;-><init>(Lgor;IZ)V
+
+    iput-object v0, p0, Leib;->b:Lgor;
+
+    .line 6
+    new-instance v0, Lein;
+
+    const/4 v1, 0x5
+
+    const/4 v2, 0x1
+
+    invoke-direct {v0, p5, v1, v2}, Lein;-><init>(Lgor;IZ)V
+
+    iput-object v0, p0, Leib;->d:Lgor;
+
+    .line 7
+    iput-object p6, p0, Leib;->c:Lfyy;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lklc;Lken;Leht;Lejc;Lfyy;)V
+    .locals 3	#bsg 8.1 ns fix
+
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     iput-object p1, p0, Leib;->f:Lklc;
@@ -41,15 +85,15 @@
 
     new-instance v0, Lein;
 
-    const/4 v1, 0x5
+    const/4 v1, 0x4
 
-    const/4 v2, 0x1
+    const/4 v2, 0x0
 
-    invoke-direct {v0, p5, v1, v2}, Lein;-><init>(Lgor;IZ)V
+    invoke-direct {v0, p4, v1, v2}, Lein;-><init>(Lgor;IZ)V
 
     iput-object v0, p0, Leib;->d:Lgor;
 
-    iput-object p6, p0, Leib;->c:Lfyy;
+    iput-object p5, p0, Leib;->c:Lfyy;
 
     return-void
 .end method

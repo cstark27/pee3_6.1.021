@@ -293,6 +293,8 @@
     invoke-virtual {v2, v3}, Lceq;->a(Lcet;)Z
 
     move-result v2
+	
+	const/4 v2, 0x1		#something for Portrait depth
 
     move-object/from16 v0, p7
 

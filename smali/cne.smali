@@ -452,11 +452,13 @@
 
     const-string v5, "persist.gcam.temporal_binning"
 
-    const/4 v6, 0x0
+    const/4 v6, 0x1
 
     invoke-virtual {v2, v5, v6}, Lgah;->a(Ljava/lang/String;Z)Z
 
     move-result v2
+	
+	const v2, 0x1	#temporal_binning
 
     if-nez v2, :cond_2c
 
@@ -465,6 +467,8 @@
     invoke-static {v2}, Lclq;->a(Livz;)Z
 
     move-result v2
+	
+	const v2, 0x1	#temporal_binning
 
     if-nez v2, :cond_2b
 
@@ -488,8 +492,10 @@
     invoke-virtual {v2}, Lkyb;->b()Z
 
     move-result v2
+	
+	sget v2, Lbti;->sEnhAWB:I	#new awb for hdr enhanced
 
-    if-nez v2, :cond_2a
+    if-eqz v2, :cond_2a
 
     :cond_2
     iget-object v2, p0, Lcne;->q:Lcnt;
@@ -537,6 +543,8 @@
     invoke-virtual {v3}, Lkyb;->b()Z
 
     move-result v3
+	
+	const/4 v3, 0x1		#allows Sabre merge method
 
     if-eqz v3, :cond_26
 

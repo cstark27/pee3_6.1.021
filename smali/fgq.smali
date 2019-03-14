@@ -112,7 +112,7 @@
 
     iget-object v1, p0, Lfgq;->l:Lhzl;
 
-    invoke-interface {v0, v1}, Lhzn;->b(Lhzl;)V
+    invoke-interface {v0, v1}, Lhzn;->b(Lhzl;)V		#hides the toast
 
     :cond_0
     return-void
@@ -170,7 +170,14 @@
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
     move-result-object v1
-
+	
+	sget v2, Lbti;->sPermNS:I
+	
+	if-eqz v2, :cond_0
+	
+	const-string v1, "Night"	#override text of Night Sight
+	
+	:cond_0
     iput-object v1, v0, Lhzm;->i:Ljava/lang/String;
 
     iget-object v1, p0, Lfgq;->i:Landroid/content/res/Resources;
@@ -213,7 +220,7 @@
 .end method
 
 .method public final a(Lkvg;)V
-    .locals 4
+    .locals 5
 
     const/4 v3, 0x0
 
@@ -240,7 +247,14 @@
     invoke-virtual {v2}, Lkyb;->b()Z
 
     move-result v2
-
+	
+	sget v4, Lbti;->sd845:I
+	
+	if-nez v4, :cond_9
+	
+	const v2, 0x0	#fix night message not showing
+	
+	:cond_9
     if-nez v2, :cond_7
 
     iget-object v0, v0, Livz;->c:Lkyb;
@@ -476,7 +490,14 @@
     iget v1, p0, Lfgq;->m:F
 
     cmpg-float v0, v0, v1
+	
+	sget v1, Lbti;->sPermNS:I
+	
+	if-eqz v1, :cond_5
+	
+	const v0, 0x0	#show Night Sight button all the time
 
+	:cond_5
     if-gez v0, :cond_4
 
     iput v5, v4, Lfgs;->a:I
@@ -502,7 +523,7 @@
 
     iget-object v1, p0, Lfgq;->k:Lhzl;
 
-    invoke-interface {v0, v1}, Lhzn;->a(Lhzl;)V
+    invoke-interface {v0, v1}, Lhzn;->a(Lhzl;)V		#shows the night sight toast
 
     goto :goto_0
 

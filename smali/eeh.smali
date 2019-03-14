@@ -329,29 +329,37 @@
 .method private final b()Z
     .locals 2
 
-    iget-object v0, p0, Leeh;->d:Lken;
+    #.line 172								#overrides image_intent check so PVC is used at other times
+    #iget-object v0, p0, Leeh;->d:Lken;
 
-    invoke-interface {v0}, Lken;->b()Ljava/lang/Object;
+    #invoke-interface {v0}, Lken;->b()Ljava/lang/Object;
 
-    move-result-object v0
+    #move-result-object v0
 
-    sget-object v1, Liur;->a:Liur;
+    #sget-object v1, Liur;->a:Liur;
 
-    if-ne v0, v1, :cond_0
+    #if-ne v0, v1, :cond_0
 
-    iget-object v0, p0, Leeh;->c:Lbxu;
+    #.line 173
+    #iget-object v0, p0, Leeh;->c:Lbxu;
 
-    invoke-virtual {v0}, Lbxu;->e()Z
+    #invoke-virtual {v0}, Lbxu;->e()Z
 
-    move-result v0
+    #move-result v0
 
-    :goto_0
+	iget-object v0, p0, Leeh;->e:Lbti;
+	
+	invoke-virtual {v0}, Lbti;->sPVC()I
+	
+	move-result v0
+	
+    #:goto_0
     return v0
 
-    :cond_0
-    const/4 v0, 0x0
+    #:cond_0
+    #const/4 v0, 0x0
 
-    goto :goto_0
+    #goto :goto_0
 .end method
 
 
@@ -461,6 +469,8 @@
     invoke-virtual {v4, v5, v6}, Lgah;->a(Ljava/lang/String;Ljava/lang/String;)Z
 
     move-result v4
+	
+	const v4, 0x1
 
     if-eqz v4, :cond_2
 

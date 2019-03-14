@@ -34,7 +34,7 @@
 
     check-cast v0, Lhwf;
 
-    sget-object v1, Lgpt;->a:Lgpt;
+    sget-object v1, Lgpt;->a:Lgpt;	#default hdr+ mode
 
     new-instance v2, Lgpn;
 

@@ -6,6 +6,10 @@
 # static fields
 .field private static final d:Ljava/lang/String;
 
+.field public static isrestart:Z
+
+.field public static changed:Z
+
 
 # instance fields
 .field private e:Leqq;
@@ -22,6 +26,12 @@
     move-result-object v0
 
     sput-object v0, Lcom/google/android/apps/camera/legacy/app/settings/CameraSettingsActivity;->d:Ljava/lang/String;
+
+    const/4 v0, 0x0
+
+    sput-boolean v0, Lcom/google/android/apps/camera/legacy/app/settings/CameraSettingsActivity;->isrestart:Z
+	
+	sput-boolean v0, Lcom/google/android/apps/camera/legacy/app/settings/CameraSettingsActivity;->changed:Z
 
     return-void
 .end method
@@ -166,6 +176,60 @@
 
 
 # virtual methods
+.method public onBackPressed()V
+    .locals 3
+
+    invoke-virtual {p0}, Lcom/google/android/apps/camera/legacy/app/settings/CameraSettingsActivity;->getApplicationContext()Landroid/content/Context;
+
+    move-result-object v2
+
+    invoke-super {p0}, Landroid/app/Activity;->onBackPressed()V
+	
+	sget v1, Lbti;->sHdr_process:I
+
+    if-nez v1, :cond_1
+
+    sget-boolean v1, Lcom/google/android/apps/camera/legacy/app/settings/CameraSettingsActivity;->isrestart:Z
+
+    if-eqz v1, :cond_0
+
+    new-instance v0, Landroid/content/Intent;
+
+    const-class v1, Lcom/google/android/apps/camera/legacy/app/activity/main/CameraActivity;
+
+    invoke-direct {v0, v2, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+
+    const v1, 0x8000
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    const/high16 v1, 0x10000000
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    invoke-virtual {v2, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    const/4 v2, 0x0
+
+    invoke-static {v2}, Ljava/lang/System;->exit(I)V
+
+	:goto_0
+    :cond_0
+    return-void
+	
+	:cond_1
+	sget-boolean v1, Lcom/google/android/apps/camera/legacy/app/settings/CameraSettingsActivity;->changed:Z
+
+    if-eqz v1, :cond_2
+	
+	const-string v0, "HDR+ Processing. Force close app to update settings."
+
+    invoke-static {v0}, Lcom/custom/extras;->ShowToast(Ljava/lang/String;)V
+	
+	:cond_2
+	goto :goto_0
+.end method
+
 .method public onCreate(Landroid/os/Bundle;)V
     .locals 7
 
@@ -317,19 +381,51 @@
 .method public onMenuItemSelected(ILandroid/view/MenuItem;)Z
     .locals 3
 
-    const/4 v2, 0x1
-
     invoke-interface {p2}, Landroid/view/MenuItem;->getItemId()I
 
     move-result v0
 
     const v1, 0x102002c
 
-    if-ne v0, v1, :cond_0
+    if-ne v0, v1, :cond_1
 
-    invoke-virtual {p0}, Lcom/google/android/apps/camera/legacy/app/settings/CameraSettingsActivity;->finish()V
+    invoke-virtual {p0}, Lcom/google/android/apps/camera/legacy/app/settings/CameraSettingsActivity;->getApplicationContext()Landroid/content/Context;
+
+    move-result-object v2
+
+    sget-boolean v1, Lcom/google/android/apps/camera/legacy/app/settings/CameraSettingsActivity;->isrestart:Z
+
+    if-eqz v1, :cond_0
+
+    new-instance v0, Landroid/content/Intent;
+
+    const-class v1, Lcom/google/android/apps/camera/legacy/app/activity/main/CameraActivity;
+
+    invoke-direct {v0, v2, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+
+    const v1, 0x8000
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    const/high16 v1, 0x10000000
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
+
+    invoke-virtual {v2, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    const/4 v2, 0x0
+
+    invoke-static {v2}, Ljava/lang/System;->exit(I)V
+
+    goto :goto_0
 
     :cond_0
+    invoke-virtual {p0}, Lcom/google/android/apps/camera/legacy/app/settings/CameraSettingsActivity;->finish()V
+
+    :cond_1
+    :goto_0
+    const/4 v2, 0x1
+
     return v2
 .end method
 

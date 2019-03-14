@@ -274,7 +274,7 @@
 
     invoke-direct {v0, p0, p1}, Lesp;-><init>(Lesn;Lbgf;)V
 
-    invoke-interface {p1, v0}, Lbgf;->a(Lbgk;)V
+    invoke-interface {p1, v0}, Lbgf;->a(Lbgk;)V			#loads the google photos need breakpoint
 
     goto :goto_1
 

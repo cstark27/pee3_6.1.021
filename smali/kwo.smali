@@ -666,12 +666,19 @@
 
     invoke-interface {v0, v1}, Lklg;->a(Ljava/lang/String;)V
 
+	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I	#8.1 fix
+
+    const/16 v1, 0x1c
+
+    if-lt v0, v1, :cond_9
+	
     invoke-virtual {p3}, Lmhd;->b()Z
 
     move-result v0
 
     if-nez v0, :cond_6
 
+	:cond_9
     iget-object v0, p0, Lkwo;->d:Lklb;
 
     const-string v1, "Creating regular capture session from output configurations."

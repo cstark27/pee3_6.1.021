@@ -65,7 +65,7 @@
 
     const-string v1, "RELEASE"
 
-    const-string v2, "com.google.android.apps.camera.specialtypes.SpecialTypesProvider"
+    const-string v2, "com.google.android.apps.camera.specialtypes.SpecialTypesProviderEng"
 
     invoke-direct {v0, v1, v6, v2}, Lbth;-><init>(Ljava/lang/String;ILjava/lang/String;)V
 

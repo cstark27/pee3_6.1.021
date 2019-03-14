@@ -263,6 +263,8 @@
     invoke-virtual {v0}, Lkyb;->b()Z
 
     move-result v0
+	
+	const/4 v0, 0x1	#enable HEVC button
 
     if-nez v0, :cond_3
 
@@ -278,6 +280,8 @@
     invoke-virtual {v0}, Lfur;->d()Z
 
     move-result v0
+	
+	const v0, 0x1	#enable sound setting
 
     if-nez v0, :cond_4
 

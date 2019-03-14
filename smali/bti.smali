@@ -2,6 +2,38 @@
 .super Ljava/lang/Object;
 .source "PG"
 
+# static field
+.field public static sd821:I
+
+.field public static sd835:I
+
+.field public static sd845:I
+
+.field public static sPhotos:I
+
+.field public static sPVC:I
+
+.field public static sEnhAWB:I
+
+.field public static sTrackAF:I
+
+.field public static sPort:I
+
+.field public static sEnhFrames:I
+
+.field public static sPermNS:I
+
+.field public static sHdr_process:I
+
+.field public static sMode:I
+
+.field public static sContrast:I
+
+.field public static sP3M:I
+
+.field public static sP3D:I
+
+.field public static sP3I:I
 
 # instance fields
 .field public final a:Livz;
@@ -22,6 +54,24 @@
     iput-object p2, p0, Lbti;->a:Livz;
 
     iput-object p3, p0, Lbti;->c:Landroid/content/SharedPreferences;
+	
+	invoke-virtual {p0}, Lbti;->sEnhAWB()I
+	
+	invoke-virtual {p0}, Lbti;->sTrackAF()I
+	
+	invoke-virtual {p0}, Lbti;->sPort()I
+	
+	#invoke-virtual {p0}, Lbti;->sEnhFrames()I
+	
+	invoke-virtual {p0}, Lbti;->sPermNS()I
+	
+	invoke-virtual {p0}, Lbti;->sContrast()I
+	
+	#invoke-virtual {p0}, Lbti;->sP3D()I
+	
+	#invoke-virtual {p0}, Lbti;->sP3I()I
+	
+	#invoke-virtual {p0}, Lbti;->sP3M()I
 
     new-instance v0, Lbtl;
 
@@ -294,4 +344,161 @@
     const/4 v0, 0x4
 
     goto :goto_0
+.end method
+
+.method public static MenuValue(Ljava/lang/String;)I
+    .locals 3
+
+    invoke-static {}, Landroid/app/AppGlobals;->getInitialApplication()Landroid/app/Application;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/app/Application;->getPackageName()Ljava/lang/String;
+
+    move-result-object v1
+
+    const/4 v2, 0x1
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->createPackageContext(Ljava/lang/String;I)Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-static {v0}, Landroid/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object v1
+
+    invoke-interface {v1, p0}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    invoke-static {v0}, Landroid/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object v0
+
+    const/4 v1, 0x0
+
+    invoke-interface {v0, p0, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v2}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+    move-result v2
+
+    :cond_0
+    return v2
+.end method
+
+.method public sPhotos()I
+    .locals 1
+
+    const-string v0, "pref_use_photos_key"
+
+    invoke-static {v0}, Lbti;->MenuValue(Ljava/lang/String;)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public sPVC()I
+    .locals 1
+
+    const-string v0, "pref_use_pvc_key"
+
+    invoke-static {v0}, Lbti;->MenuValue(Ljava/lang/String;)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public sEnhAWB()I
+    .locals 1
+
+    const-string v0, "pref_disable_enh_awb_key"
+
+    invoke-static {v0}, Lbti;->MenuValue(Ljava/lang/String;)I
+
+    move-result v0
+	
+	sput v0, Lbti;->sEnhAWB:I
+
+    return v0
+.end method
+
+.method public sTrackAF()I
+    .locals 1
+
+    const-string v0, "pref_trackaf_key"
+
+    invoke-static {v0}, Lbti;->MenuValue(Ljava/lang/String;)I
+
+    move-result v0
+	
+	sput v0, Lbti;->sTrackAF:I
+
+    return v0
+.end method
+
+.method public sPort()I
+    .locals 1
+
+    const-string v0, "pref_enhport_key"
+
+    invoke-static {v0}, Lbti;->MenuValue(Ljava/lang/String;)I
+
+    move-result v0
+	
+	sput v0, Lbti;->sPort:I
+
+    return v0
+.end method
+
+.method public sEnhFrames()I
+    .locals 1
+
+    const-string v0, "pref_enhframes_key"
+
+    invoke-static {v0}, Lbti;->MenuValue(Ljava/lang/String;)I
+
+    move-result v0
+	
+	sput v0, Lbti;->sEnhFrames:I
+
+    return v0
+.end method
+
+.method public sPermNS()I
+    .locals 1
+
+    const-string v0, "pref_permns_key"
+
+    invoke-static {v0}, Lbti;->MenuValue(Ljava/lang/String;)I
+
+    move-result v0
+	
+	sput v0, Lbti;->sPermNS:I
+
+    return v0
+.end method
+
+.method public sContrast()I
+    .locals 1
+
+    const-string v0, "pref_contrast_key"
+
+    invoke-static {v0}, Lbti;->MenuValue(Ljava/lang/String;)I
+
+    move-result v0
+	
+	sput v0, Lbti;->sContrast:I
+
+    return v0
 .end method

@@ -66,7 +66,7 @@
 
 # virtual methods
 .method public final synthetic a()Ljava/lang/Object;
-    .locals 6
+    .locals 7
 
     iget-object v0, p0, Lcmh;->b:Loez;
 
@@ -121,7 +121,14 @@
     invoke-virtual {v5}, Lkyb;->b()Z
 
     move-result v5
-
+	
+	sget v6, Lbti;->sd845:I
+	
+	if-nez v6, :cond_1
+	
+	const v5, 0x0	#beauty mode workaround
+	
+	:cond_1
     if-eqz v5, :cond_0
 
     sget-object v0, Lclr;->g:Lclr;

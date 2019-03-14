@@ -268,7 +268,7 @@
 
 # virtual methods
 .method public final a(Lndp;Lfyk;Ledn;Lgao;Lgpp;Lcom/google/android/apps/camera/stats/CameraDeviceInstrumentationSession;)Leee;
-    .locals 5
+    .locals 6
 
     invoke-static {p1}, Lmhf;->a(Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -363,6 +363,10 @@
     sget-object v3, Lkvw;->a:Lkvw;
 
     if-ne v2, v3, :cond_1
+	
+	sget v5, Lbti;->sd821:I
+	
+	if-nez v5, :cond_7	#Pixel 1 portrait workaround
 
     sget-object v1, Leek;->a:Ljava/lang/String;
 
@@ -458,6 +462,7 @@
 
     if-eqz v2, :cond_5
 
+	:cond_7
     sget-object v1, Leek;->a:Ljava/lang/String;
 
     const-string v2, "Selected Pixel Portrait Zsl Hdr No PD OneCamera configuration."

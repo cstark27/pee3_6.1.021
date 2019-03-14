@@ -1159,6 +1159,66 @@
     goto :goto_1
 
     :cond_4
+	sget v0, Landroid/os/Build$VERSION;->SDK_INT:I	#8.1 fix
+
+    const/16 v2, 0x1c
+
+    if-ge v0, v2, :cond_e
+
+    const-string v0, "pref_trackaf_key"
+
+    invoke-direct {p0, v0}, Leqq;->a(Ljava/lang/String;)V
+	
+	const-string v0, "pref_disable_enh_awb_key"
+
+    invoke-direct {p0, v0}, Leqq;->a(Ljava/lang/String;)V
+	
+	:cond_e
+	sget-object v0, Landroid/os/Build;->DEVICE:Ljava/lang/String;
+	
+	const-string v2, "walleye"
+	
+	invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	
+	move-result v2
+	
+	if-nez v2, :cond_f
+	
+	sget-object v0, Landroid/os/Build;->DEVICE:Ljava/lang/String;
+	
+	const-string v2, "taimen"
+	
+	invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	
+	move-result v2
+	
+	if-nez v2, :cond_f
+	
+	sget-object v0, Landroid/os/Build;->DEVICE:Ljava/lang/String;
+	
+	const-string v2, "blueline"
+	
+	invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	
+	move-result v2
+	
+	if-nez v2, :cond_f
+	
+	sget-object v0, Landroid/os/Build;->DEVICE:Ljava/lang/String;
+	
+	const-string v2, "crosshatch"
+	
+	invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+	
+	move-result v2
+	
+	if-nez v2, :cond_f
+	
+	const-string v0, "pref_use_pvc_key"
+
+    invoke-direct {p0, v0}, Leqq;->a(Ljava/lang/String;)V
+	
+	:cond_f
     const-string v0, "pref_camera_recordlocation_key"
 
     invoke-virtual {p0, v0}, Leqq;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
@@ -1748,7 +1808,7 @@
 .end method
 
 .method public final onSharedPreferenceChanged(Landroid/content/SharedPreferences;Ljava/lang/String;)V
-    .locals 1
+    .locals 3
 
     const-string v0, "pref_video_quality_back_key"
 
@@ -1761,5 +1821,99 @@
     invoke-direct {p0}, Leqq;->c()V
 
     :cond_0
+	const/4 v0, 0x1
+
+    sput-boolean v0, Lcom/google/android/apps/camera/legacy/app/settings/CameraSettingsActivity;->changed:Z
+	
+    sget v0, Lbti;->sHdr_process:I
+
+    if-nez v0, :cond_2
+
+    const-string v0, "pref_use_photos_key"
+
+    invoke-virtual {p2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+	
+	const-string v0, "pref_permns_key"
+
+    invoke-virtual {p2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+	
+	const-string v0, "pref_disable_enh_awb_key"
+
+    invoke-virtual {p2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+	
+	const-string v0, "pref_trackaf_key"
+
+    invoke-virtual {p2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+	
+	const-string v0, "pref_use_pvc_key"
+
+    invoke-virtual {p2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+	
+	const-string v0, "pref_contrast_key"
+
+    invoke-virtual {p2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+	
+	const-string v0, "pref_p3_model_key"
+
+    invoke-virtual {p2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+	
+	const-string v0, "pref_p3_device_key"
+
+    invoke-virtual {p2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+	
+	const-string v0, "pref_p3_interface_key"
+
+    invoke-virtual {p2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    const-string v0, "pref_enhport_key"
+
+    invoke-virtual {p2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_2
+
+    :cond_1
+    const/4 v0, 0x1
+
+    sput-boolean v0, Lcom/google/android/apps/camera/legacy/app/settings/CameraSettingsActivity;->isrestart:Z
+
+    :cond_2
     return-void
 .end method

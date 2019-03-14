@@ -38,8 +38,8 @@
     iget-object v0, v0, Leqz;->c:Lgpn;
 
     sget-object v1, Lgpt;->a:Lgpt;
-
-    invoke-virtual {v0, v1}, Lgpn;->a(Ljava/lang/Object;)V
+	
+    #invoke-virtual {v0, v1}, Lgpn;->a(Ljava/lang/Object;)V			#hdr+ reset fix for Pixel 1
 
     :cond_0
     return-void

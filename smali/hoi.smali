@@ -28,7 +28,7 @@
 
 # virtual methods
 .method public final synthetic a()Ljava/lang/Object;
-    .locals 2
+    .locals 3
 
     iget-object v1, p0, Lhoi;->b:Loez;
 
@@ -45,7 +45,14 @@
     invoke-virtual {v0}, Lkyb;->b()Z
 
     move-result v0
-
+	
+	sget v2, Lbti;->sd845:I
+	
+	if-nez v2, :cond_1
+	
+	const/4 v0, 0x1	#fix Pixel 2 Photobooth capture
+	
+	:cond_1
     if-nez v0, :cond_0
 
     sget-object v0, Lmgh;->a:Lmgh;

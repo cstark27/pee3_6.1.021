@@ -2,6 +2,8 @@
 .super Letu;
 .source "PG"
 
+# static field
+.field public static lens:I
 
 # instance fields
 .field private final synthetic a:Letv;
@@ -58,6 +60,16 @@
     iget-object v0, p0, Leud;->a:Letv;
 
     iget-object v0, v0, Letv;->s:Ljcs;
+	
+	sget v1, Leud;->lens:I			#Pixel 2016 gallery workaround when in Portrait
+	
+	if-eqz v1, :cond_0
+	
+	const/high16 v1, 0x3fc00000    # 1.5f
+
+
+	:goto_0
+    invoke-interface {v0, v1}, Ljcs;->b(F)V
 
     invoke-interface {v0}, Ljcs;->i()V
 
@@ -92,10 +104,15 @@
     invoke-virtual {v0}, Lfuv;->a()V
 
     return-void
+	
+	:cond_0
+	const v1, 0x3f99999a    # 1.2f
+	
+	goto :goto_0
 .end method
 
 .method public final b()V
-    .locals 3
+    .locals 4
 
     const/4 v2, 0x0
 

@@ -1985,7 +1985,14 @@
     invoke-virtual {v0}, Lkyb;->b()Z
 
     move-result v0
-
+	
+	sget v1, Lbti;->sd845:I
+	
+	if-nez v1, :cond_22
+	
+	const v0, 0x0	#EIS fix, disables tracking AF in video unfortunately 
+	
+	:cond_22
     if-eqz v0, :cond_0
 
     iget-object v0, p0, Ldxr;->K:Livz;

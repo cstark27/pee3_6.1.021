@@ -138,7 +138,7 @@
 
     sget-object v0, Lbtg;->a:Lbtg;
 
-    if-ne p4, v0, :cond_5
+    #if-ne p4, v0, :cond_5
 
     move v0, v1
 

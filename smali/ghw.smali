@@ -39,7 +39,9 @@
 
     if-eqz p6, :cond_0
 
-    invoke-static {p5}, Liws;->a(Lcom/google/android/libraries/camera/exif/ExifInterface;)V
+    move-object/from16 v1, p5
+
+    invoke-static {v1}, Liws;->a(Lcom/google/android/libraries/camera/exif/ExifInterface;)V
 
     :cond_0
     new-instance v1, Lghw;
